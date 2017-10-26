@@ -127,6 +127,31 @@ if yes?('Would you like to install Devise?')
 end
 
 git :init
+
+remove_file .gitignore
+create_file .gitignore do <<-CODE
+# Ignore bundler config.
+/.bundle
+
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+# Ignore Byebug command history file.
+.byebug_history
+
+# Ignore application configuration
+/config/application.yml
+
+.vagrant
+
+/public/system/*
+
+.DS_Store
+CODE
+
 git add: "."
 git commit: "-a -m 'Initial commit'"
 
